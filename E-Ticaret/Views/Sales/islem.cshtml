@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "islem";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="Tr">
+<head>
+    <link href="~/Bıçakçıoğlu knife/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="banner_section layout_padding">
+        <div class="container">
+            <div id="my_slider" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">Hayalindeki <br>Bıçaklar bu sayfada</h1>
+                                <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">Özel Çelikten <br>Yapılmış Bıçaklar bu sayfada</h1>
+                                <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">Kişiye<br>Özel Bıçaklar bu sayfada</h1>
+                                <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h1>@ViewBag.İslem</h1>
+        </div>
+    </div>
+</body>
+</html>

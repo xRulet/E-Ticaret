@@ -1,0 +1,90 @@
+﻿body {
+    background-color: #f0f0f0; /* Açık Gri Arka Plan */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.form-title {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px; /* Boşluk Azaltıldı */
+    position: relative;
+}
+
+    .form-group .fa {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        color: #ccc;
+    }
+
+.form-control {
+    border: 1px solid #ccc;
+    padding: 10px 30px 10px 40px;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 50%;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    margin-right: 10px;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+    .btn-success:hover {
+        background-color: #1d8f33;
+    }
+
+/* Logolar İçin Özel Stiller */
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+    .logo-container img {
+        max-width: 150px;
+    }
+
+.card {
+    margin: 10px; 
+}

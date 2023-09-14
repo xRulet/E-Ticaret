@@ -1,0 +1,76 @@
+﻿@model List<EntityLayer.Entites.Product>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="banner_section layout_padding">
+    <div class="container">
+        <div id="my_slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="banner_taital">Hayalindeki <br>Bıçaklar bu sayfada</h1>
+                            <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="banner_taital">Özel Çelikten <br>Yapılmış Bıçaklar bu sayfada</h1>
+                            <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="banner_taital">Kişiye<br>Özel Bıçaklar bu sayfada</h1>
+                            <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+<div class="fashion_section">
+    <div id="ana_slider" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <h1 class="fashion_taital">ÜRÜNLERİMİZ</h1>
+                    <div class="fashion_section_2">
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-lg-4 col-sm-4">
+                                    <div class="box_main">
+                                        <h4 class="shirt_text">@item.Name</h4>
+                                        <p class="price_text">Price <span style="color: #262626;">$ @item.Price</span></p>
+                                        <div class="tshirt_img"><img src="~/Content/Image/@item.Image"></div>
+                                        <div class="btn_main">
+                                            <div id="satinalBtn" class="buy_bt"><a href="#">Satın Al</a></div>
+                                            <div class="seemore_bt"><a href="/Product/ProductDetails/@item.Id">Daha fazla gör</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

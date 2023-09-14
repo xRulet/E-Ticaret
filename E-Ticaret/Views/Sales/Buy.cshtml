@@ -1,0 +1,87 @@
+﻿@model EntityLayer.Entites.Cart
+@{
+    ViewBag.Title = "Buy";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Bıçakçıoğlu knife/css/style.css">
+
+<div class="banner_section layout_padding">
+    <div class="container">
+        <div id="my_slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="banner_taital">Hayalindeki <br>Bıçaklar bu sayfada</h1>
+                            <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="banner_taital">Özel Çelikten <br>Yapılmış Bıçaklar bu sayfada</h1>
+                            <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="banner_taital">Kişiye<br>Özel Bıçaklar bu sayfada</h1>
+                            <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+   </div>
+
+<div class="container">
+    <div class="modal-header">
+        <h2>Satın Al</h2>
+    </div>
+
+    <div class="container">
+        @using (Html.BeginForm("Buy2", "Sales", FormMethod.Post))
+        {
+            <div class="modal-body">
+                @Html.HiddenFor(x => x.Id)
+
+                <div class="form-group">
+                    Kullanıcı Adı Soyadı: @Session["Ad"] @Session["Soyad"]
+                </div>
+
+                <div class="form-group">
+                    Ürün Bilgisi: @Html.DisplayFor(x => x.Product.Name, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    Adet: @Html.DisplayFor(x => x.Quantity, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <img src="~/Content/Image/@Model.Product.Image" width="200" height="200" />
+                </div>
+
+                <div class="form-group">
+                    Fiyat: @Html.DisplayFor(x => x.Price, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="modal-footer" style="float:right">
+                <button class="btn btn-success">Satın Al</button>
+                <a href="/Cart/Index" class="btn btn-danger">İptal</a>
+            </div>
+        }
+    </div>
+</div>    

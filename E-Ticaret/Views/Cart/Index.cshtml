@@ -1,0 +1,161 @@
+﻿@model List<EntityLayer.Entites.Cart>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="banner_section layout_padding">
+    <div class="container">
+        <div id="my_slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="banner_taital">Hayalindeki <br>Bıçaklar bu sayfada</h1>
+                            <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="banner_taital">Özel Çelikten <br>Yapılmış Bıçaklar bu sayfada</h1>
+                            <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="banner_taital">Kişiye<br>Özel Bıçaklar bu sayfada</h1>
+                            <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+  </div>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="text-uppercase">@Session["Ad"] @Session["Soyad"]</h1>
+            <h3>Sepetim</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+
+                        <th>Ürün Bilgisi</th>
+                        <th>Adet</th>
+                        <th>Fiyat</th>
+                        <th>Tarih</th>
+                        <th>Resim</th>
+                        <th>Sil</th>
+                        <th>Satın Al</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@item.Product.Name</td>
+
+                            <td>
+                                <div>
+                                    @Html.ActionLink("-", "azalt", new { id = @item.Id }, new { @class = "btn btn-info btn-sm azalt" })
+                                </div>
+                                <div>
+
+
+                                    @Html.TextBoxFor(x => item.Quantity, new { @class = "txt", data_id = item.Id })
+
+                                </div>
+                                <div>
+                                    @Html.ActionLink("+", "arttir", new { id = item.Id }, new { @class = "btn btn-info btn-sm arttir" })
+                                </div>
+                            </td>
+                            <td>@item.Product.Price $</td>
+
+                            <td>@Convert.ToDateTime(item.Date).ToString("dd/MM/yyyy")</td>
+                            <td><img src="~/Content/Image/@item.Product.Image" width="200" height="200" /></td>
+                            <td>@Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor musunuz?')" })</td>
+                            <td><a href="/Sales/Buy/@item.Id" class="btn btn-success">Satın Al</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container"> @ViewBag.Tutar</div>
+<br />
+<div class="container form-group">
+    <a href="/Sales/BuyAll" class="btn btn-success form-control">Tümünü Satın Al</a>
+</div>
+
+<div class="container form-group">
+    <a href="/Cart/DeleteRange" class="btn btn-danger form-control">Hepsini Sil</a>
+</div>
+
+
+<style>
+    .txt {
+        line-height: 18px;
+        
+        width: 50px !important;
+        height: 32px;
+        font-size: 14px;
+        text-align: center;
+        border: solid 1px #ccc;
+        margin-left: 23px;
+    }
+
+    .arttir {
+        display: block;
+        cursor: pointer;
+        border: solid 1px #ccc;
+        position: absolute;
+        margin-top: -32px;
+        margin-left: 75px;
+    }
+
+    .azalt {
+        display: block;
+        border: solid 1px #ccc;
+        cursor: pointer;
+        position: absolute;
+        margin-right: 90px;
+    }
+</style>
+
+
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+
+<script>
+    $(function () {
+
+        $('.txt').on('change', function () {
+
+            var miktar = $(this).val();
+            var sepetid = $(this).attr('data-id');
+            $.ajax({
+                url: '/Cart/DinamikMiktar',
+                data: { id: sepetid, miktari: miktar },
+                success: function (res) {
+                    document.location.reload();
+                }
+            });
+
+        });
+    });
+</script>
+

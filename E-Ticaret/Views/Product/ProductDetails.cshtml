@@ -1,0 +1,173 @@
+﻿@model EntityLayer.Entites.Product
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="Tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>Ürün detay | BIÇAKÇIOĞLU KNİFE</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="~/Bıçakçıoğlu knife/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Bıçakçıoğlu knife/css/style.css">
+    <link rel="stylesheet" href="~/Bıçakçıoğlu knife/css/responsive.css">
+    <link rel="icon" href="~/Bıçakçıoğlu knife/images/icon.jpg" type="image" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext"
+          rel="stylesheet">
+    <link rel="stylesheet" href="~/Bıçakçıoğlu knife/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+          media="screen">
+</head>
+
+<body>
+
+    <div class="banner_section layout_padding">
+        <div class="container">
+            <div id="my_slider" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">Hayalindeki <br>Bıçaklar bu sayfada</h1>
+                                <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">Özel Çelikten <br>Yapılmış Bıçaklar bu sayfada</h1>
+                                <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">Kişiye<br>Özel Bıçaklar bu sayfada</h1>
+                                <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <section class="product_detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <img src="~/Content/Image/@Model.Image" alt="@Model.Name" class="img-fluid" style="margin-top: 20px;">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+
+                    <h1 class="fashion_taital">@Model.Name</h1>
+                    <p class="price_text">Fiyat: $ @Model.Price</p>
+                    <p><b>Kategori:</b> @Model.Category.Name</p>
+                    <p><b>Stok:</b> @Model.Stock</p>
+                    <p>
+                        <b>Popüler:</b>
+                        @if (Model.Popular == true)
+                        {
+                            <b style="color:green">Evet</b>
+                        }
+                        else
+                        {
+                            <b style="color:red">Hayır</b>
+                        }
+                    </p>
+                    <p>
+                        <b>Onay:</b>
+                        @if (Model.IsApproved == true)
+                        {
+                            <b style="color:green">Evet</b>
+                        }
+                        else
+                        {
+                            <b style="color:red">Hayır</b>
+                        }
+                    <p><b>Açıklama:</b> @Model.Description</p>
+                    <a class="btn btn-fefault cart" style="margin-top:15px" href="/Cart/AddCart/@Model.Id">
+                        <i class="fa fa-shopping-cart"></i>
+                        Sepete Ekle
+                    </a>
+                </div>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Yorum Yap
+                </button>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" action="/Product/Comment">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Yorum Yazınız</h5>
+
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" name="Contents" placeholder="Yorum Yazınız..."></textarea>
+                            <input type="hidden" name="ProductId" value="@Model.Id" />
+                            <input type="hidden" name="UserId" value="@Session["userid"]" />
+                            <input type="hidden" name="Date" value="@DateTime.Now" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+                            <button type="submit" class="btn btn-primary">Gönder</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <hr />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    @foreach (var item in ViewBag.yorum)
+                    {
+                        <div class="comment">
+                            <h4 style="color:coral">
+                                @item.Date <br />  @item.User.Name @item.User.SurName
+                            </h4>
+                            <p>@item.Contents</p>
+                        </div>
+                        <hr />
+                    }
+                </div>
+            </div>
+        </div>
+        @Html.Action("PopularProduct", "Product")
+    </section>
+
+
+</body>
+</html>
+
+

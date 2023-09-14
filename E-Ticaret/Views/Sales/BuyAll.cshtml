@@ -1,0 +1,97 @@
+﻿@model List<EntityLayer.Entites.Cart>
+@{
+    ViewBag.Title = "BuyAll";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div class="banner_section layout_padding">
+    <div class="container">
+        <div id="my_slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="banner_taital">Hayalindeki <br>Bıçaklar bu sayfada</h1>
+                            <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="banner_taital">Özel Çelikten <br>Yapılmış Bıçaklar bu sayfada</h1>
+                            <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="banner_taital">Kişiye<br>Özel Bıçaklar bu sayfada</h1>
+                            <div class="buynow_bt"><a href="#">Satın Al</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+   </div>
+
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <h2>Merhaba @Session["Ad"]  @Session["Soyad"] Satın Alma işlemini tamamlayın.</h2>
+        </div>
+
+        <div class="container">
+            @using (Html.BeginForm("BuyAll2", "Sales", FormMethod.Post, new { @class = "container" }))
+            {
+                foreach (var item in Model)
+                {
+                    <div class="form-group">
+                        <h4> ID: @Html.DisplayFor(x => item.Id)</h4>
+                    </div>
+
+                    <div class="form-group">
+                        <h4> Ürün Ad: @Html.DisplayFor(x => item.Product.Name)</h4>
+                    </div>
+
+                    <div class="form-group">
+                        <h4> Adet: @Html.DisplayFor(x => item.Quantity)</h4>
+                    </div>
+
+                    <div class="form-group">
+                        <h4> Fiyat: @Html.DisplayFor(x => item.Price)</h4>
+                    </div>
+
+                    <div class="form-group">
+                        <h5> Resim: <img src="~/Content/Image/@item.Product.Image" width="200" height="200" /></h5>
+                    </div>
+
+
+
+                }
+                <p style="color:red; text-align:center">@ViewBag.Tutar</p>
+                <div class="container">
+                    <div class="form-group" style="float:left">
+                        <button class="btn btn-success">Onay</button>
+                    </div>
+
+                    <div style="float:right">
+                        <a href="/Cart/Index" class="btn btn-danger">İptal</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+

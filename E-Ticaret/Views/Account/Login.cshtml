@@ -1,0 +1,87 @@
+﻿@model EntityLayer.Entites.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap / Bıçakçıoğlu Knife</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="~/Bıçakçıoğlu knife/css/login.css">
+    <link rel="icon" href="~/Bıçakçıoğlu knife/images/icon.jpg" type="image/gif" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="form-container">
+            <div class="logo-container">
+                <a href="/Home/Index"><img src="~/Bıçakçıoğlu knife/BICAKCIOĞLU KNIFE.fw.png" alt="Logo"></a>
+            </div>
+            <h2 class="form-title">Giriş Yap <i class="fas fa-sign-in-alt"></i></h2>
+            <form id="login-form" action="/Account/Login" method="post">
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="Email" name="Email" class="form-control" placeholder="Email" required>
+                    @Html.ValidationMessageFor(x => x.UserName, "", new { @style = "color:red" })
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="login-password" name="Password" class="form-control" placeholder="Şifre" required>
+                    @Html.ValidationMessageFor(x => x.Password, "", new { @style = "color:red" })
+
+                </div>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Giriş Yap</button>
+            </form>
+            <p class="error-message mt-3" id="login-error"></p>
+        </div>
+        <div class="form-container">
+            <h2 class="form-title">Kayıt Ol <i class="fas fa-user-plus"></i></h2>
+            <form id="register-form" action="/Account/Register" method="post">
+                <div class="form-group">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <input type="text" id="register-name" name="Name" class="form-control" placeholder="Adınız" required>
+                    @Html.ValidationMessageFor(x => x.Name, "", new { @style = "color:red" })
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="register-surname" name="SurName" class="form-control" placeholder="Soy Adınız" required>
+                    @Html.ValidationMessageFor(x => x.SurName, "", new { @style = "color:red" })
+                </div>
+                <div class="form-group">
+                    <i class="fa-solid fa-id-card"></i>
+                    <input type="text" id="register-username" name="UserName" class="form-control" placeholder="Kullanıcı Adı" required>
+                    @Html.ValidationMessageFor(x => x.UserName, "", new { @style = "color:red" })
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="register-email" name="Email" class="form-control" placeholder="E-posta" required>
+                    @Html.ValidationMessageFor(x => x.Email, "", new { @style = "color:red" })
+                </div>
+                <div class="form-group">
+                    <i class="fa-solid fa-key"></i>
+                    <input type="password" id="register-password" name="Password" class="form-control" placeholder="Şifre" required>
+                    @Html.ValidationMessageFor(x => x.Password, "", new { @style = "color:red" })
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="register-confirm-password" name="RePassword" class="form-control" placeholder="Şifre (Tekrar)" required>
+                    @Html.ValidationMessageFor(x => x.RePassword, "", new { @style = "color:red" })
+                </div>
+                <button type="submit" class="btn btn-success"><i class="fas fa-user-plus"></i> Kayıt Ol</button>
+            </form>
+            <p class="error-message mt-3" id="register-error"></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
